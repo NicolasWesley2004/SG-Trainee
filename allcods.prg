@@ -34,5 +34,5 @@ n... := (n... + n...) = variavel recebendo o valor entre soma de duas variaveis
 n... := (n... - n...) = variavel recebendo o valor entre subtração de duas variaveis
 n... := (n... * n...) = variavel recebendo o valor entre multiplicação de duas variaveis
 n... := (n... / n...) = variavel recebendo o valor entre divisão de duas variaveis
-3
+fzr do 7
 */
