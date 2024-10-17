@@ -4,7 +4,7 @@ local nIdade  := 0
 
 cls
 
-@ 01, 01 to 06, 33 double
+@ 01, 01 to 06, 42 double
 @ 02, 02 say "Qual seu nome?"
 @ 03, 02 say "Qual sua idade?"
 
