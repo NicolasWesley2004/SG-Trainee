@@ -5,19 +5,20 @@ local nNumeroC := 0
 
 cls
 
-@ 01, 01 to 07, 23 double
+@ 01, 01 to 08, 16 double
 
 @ 02, 02 say "Numero A ="
 @ 03, 02 say "Numero B ="
+@ 04, 02 to 04, 15 double
 
-@ 02, 13 get nNumeroA
-@ 03, 13 get nNumeroB
+@ 02, 13 get nNumeroA picture "999"
+@ 03, 13 get nNumeroB picture "999"
 read
 
 nNumeroC := nNumeroA
 nNumeroA := nNumeroB
 nNumeroB := nNumeroC
 
-@ 05, 02 say "Numero A = " + AllTrim(Str(nNumeroA))
-@ 06, 02 say "Numero B = " + AllTrim(Str(nNumeroB))
-@ 07, 02 say ""
+@ 06, 02 say "Numero A = " + AllTrim(Str(nNumeroA))
+@ 07, 02 say "Numero B = " + AllTrim(Str(nNumeroB))
+@ 08, 02 say ""

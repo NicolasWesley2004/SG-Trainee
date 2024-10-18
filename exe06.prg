@@ -1,16 +1,23 @@
-local nNota1 := 30
-local nNota2 := 80
-local nNota3 := 100
-local nMedia := 00
+local getlist := {}
+local nNota1  := 0
+local nNota2  := 0
+local nNota3  := 0
+local nMedia  := 0
 
 cls
 
-@ 01, 01 to 07, 30 double
-@ 02, 02 say "Sua primeira nota foi: " + AllTrim(Str(nNota1))
-@ 03, 02 say "Sua segunda nota foi:  " + AllTrim(Str(nNota2))
-@ 04, 02 say "Sua terceira nota foi: " + AllTrim(Str(nNota3))
+@ 01, 01 to 08, 39 double
+@ 02, 02 say "Escreva sua primeira nota:"
+@ 03, 02 say "Escreva sua segunda nota.:"
+@ 04, 02 say "Escreva sua terceira nota:"
+@ 05, 02 to 05, 38 double
+
+@ 02, 29 get nNota1 picture "999"
+@ 03, 29 get nNota2 picture "999"
+@ 04, 29 get nNota3 picture "999"
+read
 
 nMedia := ((nNota1 + nNota2 + nNota3) / 3)
 
-@ 06, 02 say "A sua media foi: " + AllTrim(Str(nMedia))
-@ 07, 01 say ""
+@ 07, 02 say "A sua media foi: " + AllTrim(Str(nMedia))
+@ 08, 01 say ""
