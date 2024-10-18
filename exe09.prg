@@ -7,12 +7,13 @@ local cString        := "             "
 
 cls
 
-@ 01, 01  to 13, 42
+@ 01, 01  to 14, 42
 @ 02, 02 say "Digite uma letra........:"
 @ 03, 02 say "Digite uma data.........:"
 @ 04, 02 say "Digite um numero inteiro:"
 @ 05, 02 say "Digite um numero decimal:"
 @ 06, 02 say "Digite uma palavra......:"
+@ 07, 02 to 07, 41 double
 
 @ 02, 28 get cLetra
 @ 03, 28 get dData          picture "99/99/9999"
@@ -21,9 +22,9 @@ cls
 @ 06, 28 get cString
 read
 
-@ 08, 02 say cLetra
-@ 09, 02 say dData          picture "99/99/9999"
-@ 10, 02 say nNumeroInteiro
-@ 11, 02 say nNumeroDecimal
-@ 12, 02 say cString
-@ 13, 01 say ""
+@ 09, 02 say cLetra
+@ 10, 02 say dData          picture "99/99/9999"
+@ 11, 02 say nNumeroInteiro
+@ 12, 02 say nNumeroDecimal
+@ 13, 02 say cString
+@ 14, 01 say ""
