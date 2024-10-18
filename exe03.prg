@@ -1,12 +1,17 @@
-local nNumero1 := 5
-local nNumero2 := 10
+local getlist  := {}
+local nNumero1 := 0
+local nNumero2 := 0
 local nProduto := 0
 
 cls
 
-@ 01, 01 to 06, 26 double
-@ 02, 02 say "Numero 1 e igual a " + AllTrim(Str(nNumero1))
-@ 03, 02 say "Numero 2 e igual a " + AllTrim(Str(nNumero2))
+@ 01, 01 to 06, 34 double
+@ 02, 02 say "Escolha um numero...:"
+@ 03, 02 say "Escolha outro numero:"
+
+@ 02, 24 get nNumero1
+@ 03, 24 get nNumero2
+read
 
 nProduto := (nNumero1 * nNumero2)
 
