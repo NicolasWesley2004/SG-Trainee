@@ -32,8 +32,8 @@ nValorB     := (nQuantidadeProdutoB * nProdutoB)
 nValorC     := (nQuantidadeProdutoC * nProdutoC)
 nValorTotal := (nValorA + nValorB + nValorC)
 
-@ 14, 02 say "Produto A ficou em...: R$" + AllTrim(Transform(nValorA, "@e"))
-@ 15, 02 say "Produto B ficou em...: R$" + AllTrim(Transform(nValorB, "@e"))
-@ 16, 02 say "Produto C ficou em...: R$" + AllTrim(Transform(nValorC, "@e"))
-@ 18, 02 say "Valor total da compra: R$" + AllTrim(Transform(nValorTotal, "@e"))
+@ 14, 02 say "Produto A ficou em...: R$" + AllTrim(Transform(nValorA, "@e 99999.99"))
+@ 15, 02 say "Produto B ficou em...: R$" + AllTrim(Transform(nValorB, "@e 99999.99"))
+@ 16, 02 say "Produto C ficou em...: R$" + AllTrim(Transform(nValorC, "@e 99999.99"))
+@ 18, 02 say "Valor total da compra: R$" + AllTrim(Transform(nValorTotal, "@e 99999.99"))
 @ 19, 01 say ""
