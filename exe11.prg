@@ -13,7 +13,9 @@ cls
 @ 03, 18 get nIdade picture "999"
 read
 
-if nIdade <= 7
+if nIdade <= 4
+    @ 06, 02 say "Voce ainda e muito novo"
+elseif nIdade <= 17
     @ 06, 02 say "Voce esta registrado no infantil A"
 elseif nIdade <= 10
     @ 06, 02 say "Voce esta registrado no infantil B"
