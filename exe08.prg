@@ -1,7 +1,7 @@
 local getlist             := {}
-local nProdutoA           := 10.00
-local nProdutoB           := 5.25
-local nProdutoC           := 20.00
+local nValorProdutoA      := 10.00
+local nValorProdutoB      := 5.25
+local nValorProdutoC      := 20.00
 local nQuantidadeProdutoA := 0
 local nQuantidadeProdutoB := 0
 local nQuantidadeProdutoC := 0
@@ -14,11 +14,11 @@ cls
 
 @ 01, 01 TO 19, 35 double
 @ 02, 10 say "MERCADO TRAINEE"
-@ 04, 02 say "Produto A = R$10,00"
+@ 04, 02 say "Produto A = " + AllTrim(Transform(nValorProdutoA, "@e"))
 @ 05, 02 say "Insira a quantidade:"
-@ 07, 02 say "Produto B = R$5,25"
+@ 07, 02 say "Produto B = " + AllTrim(Transform(nValorProdutoB, "@e"))
 @ 08, 02 say "Insira a quantidade:"
-@ 10, 02 say "Produto C = R$20,00"
+@ 10, 02 say "Produto C = " + AllTrim(Transform(nValorProdutoC, "@e"))
 @ 11, 02 say "Insira a quantidade:"
 @ 12, 02 TO 12, 34 double
 
@@ -27,9 +27,9 @@ cls
 @ 11, 22 get nQuantidadeProdutoC picture "@e 999.99"
 read
 
-nValorA     := (nQuantidadeProdutoA * nProdutoA)
-nValorB     := (nQuantidadeProdutoB * nProdutoB)
-nValorC     := (nQuantidadeProdutoC * nProdutoC)
+nValorA     := (nQuantidadeProdutoA * nValorProdutoA)
+nValorB     := (nQuantidadeProdutoB * nValorProdutoB)
+nValorC     := (nQuantidadeProdutoC * nValorProdutoC)
 nValorTotal := (nValorA + nValorB + nValorC)
 
 @ 14, 02 say "Produto A ficou em...: R$" + AllTrim(Transform(nValorA, "@e 99999.99"))
