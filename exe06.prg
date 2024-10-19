@@ -19,5 +19,5 @@ read
 
 nMedia := ((nNota1 + nNota2 + nNota3) / 3)
 
-@ 07, 02 say "A sua media foi: " + AllTrim(Str(nMedia))
+@ 07, 02 say "A sua media foi: " + AllTrim(Transform(nMedia, "@E"))
 @ 08, 01 say ""

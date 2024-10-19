@@ -13,10 +13,10 @@ cls
 
 @ 02, 19 get cNome
 @ 03, 19 get nIdade picture "999"
-@ 04, 19 get nPeso  picture "@E 999.00"
+@ 04, 19 get nPeso  picture "@E 999.99"
 read
 
-@ 07, 02 say "Nome:. "  + cNome
+@ 07, 02 say "Nome.: "  + cNome
 @ 08, 02 say "Idade: "  + AllTrim(Str(nIdade))
-@ 09, 02 say "Peso:. "  + AllTrim(Str(nPeso)) + "Kg"
+@ 09, 02 say "Peso.: "  + AllTrim(Transform(nPeso, "@E")) + "Kg"
 @ 10, 01 say ""

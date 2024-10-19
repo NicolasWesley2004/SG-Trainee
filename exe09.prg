@@ -18,13 +18,13 @@ cls
 @ 02, 28 get cLetra
 @ 03, 28 get dData          picture "99/99/9999"
 @ 04, 28 get nNumeroInteiro picture "9999"
-@ 05, 28 get nNumeroDecimal picture "999.99"
+@ 05, 28 get nNumeroDecimal picture "@e 999.99"
 @ 06, 28 get cString
 read
 
 @ 09, 02 say cLetra
 @ 10, 02 say dData          picture "99/99/9999"
-@ 11, 02 say nNumeroInteiro
-@ 12, 02 say nNumeroDecimal
+@ 11, 02 say nNumeroInteiro 
+@ 12, 02 say nNumeroDecimal picture "@e"
 @ 13, 02 say cString
 @ 14, 01 say ""

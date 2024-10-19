@@ -5,12 +5,13 @@ local nNumero3 := 0
 
 cls
 
-@ 01, 01 TO 08, 26 double
+@ 01, 01 TO 08, 27 double
 @ 02, 02 say "Me diga tres numeros:"
+@ 05, 02 to 05, 26 double
 
-@ 03, 02 get nNumero1
-@ 04, 02 get nNumero2
-@ 05, 02 get nNumero3
+@ 02, 24 get nNumero1 picture "999"
+@ 03, 24 get nNumero2 picture "999"
+@ 04, 24 get nNumero3 picture "999"
 read
 
 if nNumero1 > nNumero2
