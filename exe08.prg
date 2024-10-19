@@ -12,18 +12,19 @@ local nValorTotal         := 0
 
 cls
 
-@ 00, 00 TO 16, 34 double
-@ 01, 01 say "Produto A = R$10,00"
-@ 02, 01 say "Insira a quantidade:"
-@ 04, 01 say "Produto B = R$5,25"
-@ 05, 01 say "Insira a quantidade:"
-@ 07, 01 say "Produto C = R$20,00"
-@ 08, 01 say "Insira a quantidade:"
-@ 09, 01 TO 09, 33 double
+@ 01, 01 TO 19, 35 double
+@ 02, 10 say "MERCADO TRAINEE"
+@ 04, 02 say "Produto A = R$10,00"
+@ 05, 02 say "Insira a quantidade:"
+@ 07, 02 say "Produto B = R$5,25"
+@ 08, 02 say "Insira a quantidade:"
+@ 10, 02 say "Produto C = R$20,00"
+@ 11, 02 say "Insira a quantidade:"
+@ 12, 02 TO 12, 34 double
 
-@ 02, 21 get nQuantidadeProdutoA picture "999"
-@ 05, 21 get nQuantidadeProdutoB picture "999"
-@ 08, 21 get nQuantidadeProdutoC picture "999"
+@ 05, 22 get nQuantidadeProdutoA picture "@e 999.99"
+@ 08, 22 get nQuantidadeProdutoB picture "@e 999.99"
+@ 11, 22 get nQuantidadeProdutoC picture "@e 999.99"
 read
 
 nValorA     := (nQuantidadeProdutoA * nProdutoA)
@@ -31,8 +32,8 @@ nValorB     := (nQuantidadeProdutoB * nProdutoB)
 nValorC     := (nQuantidadeProdutoC * nProdutoC)
 nValorTotal := (nValorA + nValorB + nValorC)
 
-@ 11, 01 say "Produto A ficou em...: R$" + AllTrim(Transform(nValorA, "@e"))
-@ 12, 01 say "Produto B ficou em...: R$" + AllTrim(Transform(nValorB, "@e"))
-@ 13, 01 say "Produto C ficou em...: R$" + AllTrim(Transform(nValorC, "@e"))
-@ 15, 01 say "Valor total da compra: R$" + AllTrim(Transform(nValorTotal, "@e"))
-@ 16, 01 say ""
+@ 14, 02 say "Produto A ficou em...: R$" + AllTrim(Transform(nValorA, "@e"))
+@ 15, 02 say "Produto B ficou em...: R$" + AllTrim(Transform(nValorB, "@e"))
+@ 16, 02 say "Produto C ficou em...: R$" + AllTrim(Transform(nValorC, "@e"))
+@ 18, 02 say "Valor total da compra: R$" + AllTrim(Transform(nValorTotal, "@e"))
+@ 19, 01 say ""
