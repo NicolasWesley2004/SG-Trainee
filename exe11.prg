@@ -9,7 +9,7 @@ cls
 @ 03, 02 say "Qual sua idade?"
 
 @ 02, 18 get cNome
-@ 03, 18 get nIdade
+@ 03, 18 get nIdade picture "999"
 read
 
 if nIdade <= 7
