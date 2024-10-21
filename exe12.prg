@@ -17,14 +17,14 @@ cls
 @ 06, 24 get nNumero3 picture "999"
 read
 
-if nNumero1 > nNumero2
-    if nNumero1 > nNumero3
+if nNumero1 > nNumero2 .and. nNumero1 > nNumero3
         @ 09, 02 say "Numero 1 e o maior: " + AllTrim(Str(nNumero1))
-    end if
 elseif nNumero2 > nNumero3
     @ 09, 02 say "Numero 2 e o maior: " + AllTrim(Str(nNumero2))
 elseif nNumero3 > nNumero1
     @ 09, 02 say "Numero 3 e o maior: " + AllTrim(Str(nNumero3))
+elseif nNumero1 = nNumero2 .and. nNumero1 = nNumero3
+    @ 09, 02 say "Todos sao iguais"
 end if
 
 @ 10, 01 say ""

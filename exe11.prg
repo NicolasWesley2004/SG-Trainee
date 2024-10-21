@@ -13,7 +13,7 @@ cls
 @ 06, 02 to 06, 35 double
 
 @ 04, 18 get cNome
-@ 05, 18 get nIdade picture "999"
+@ 05, 18 get nIdade picture "999" valid nIdade >= 0
 read
 
 if nIdade <= 4
