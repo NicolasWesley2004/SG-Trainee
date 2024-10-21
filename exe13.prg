@@ -7,8 +7,8 @@ cls
 @ 02, 17 say "PRODUTOS QUALIFICADOS"
 @ 04, 02 say "CODIGO"
 @ 04, 10 say "CLASSIFICACAO"
-@ 05, 02 to 05, 52 double
 
+@ 05, 02 to 05, 52 double
 @ 06, 04 say "1"
 @ 06, 10 say "Alimento nao perecivel"
 @ 07, 02 say "2 a 4"
@@ -19,8 +19,8 @@ cls
 @ 09, 10 say "Higiene pessoal"
 @ 10, 02 say "8 a 15"
 @ 10, 10 say "Limpeza e utensilios domesticos"
-@ 11, 02 to 11, 52 double
 
+@ 11, 02 to 11, 52 double
 @ 12, 02 say "Digite o codigo do produto:"
 
 @ 12, 30 get nCodigo picture "99"
