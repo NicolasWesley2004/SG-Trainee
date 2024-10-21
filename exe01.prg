@@ -1,3 +1,5 @@
+procedure main ()
+    
 cls
 
 @ 01, 01 to 03, 11 double

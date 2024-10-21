@@ -1,3 +1,5 @@
+procedure main ()
+
 local getlist        := {}
 local nNumero1       := 0
 local nNumero2       := 0

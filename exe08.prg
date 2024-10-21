@@ -1,3 +1,5 @@
+procedure main ()
+
 local getlist             := {}
 local nValorProdutoA      := 10.00
 local nValorProdutoB      := 5.25
