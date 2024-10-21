@@ -15,9 +15,9 @@ cls
 @ 06, 02 say "Escreva sua terceira nota:"
 @ 07, 02 to 07, 38 double
 
-@ 04, 29 get nNota1 picture "999"
-@ 05, 29 get nNota2 picture "999"
-@ 06, 29 get nNota3 picture "999"
+@ 04, 29 get nNota1 picture "999" valid nNota1 >= 0 .and. nNota1 <= 100
+@ 05, 29 get nNota2 picture "999" valid nNota2 >= 0 .and. nNota2 <= 100
+@ 06, 29 get nNota3 picture "999" valid nNota3 >= 0 .and. nNota3 <= 100
 read
 
 nMedia := ((nNota1 + nNota2 + nNota3) / 3)

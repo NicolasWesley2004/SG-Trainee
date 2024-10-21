@@ -15,8 +15,8 @@ cls
 @ 07, 02 to 07, 32 double
 
 @ 04, 19 get cNome
-@ 05, 19 get nIdade picture "999"
-@ 06, 19 get nPeso  picture "@E 999.99"
+@ 05, 19 get nIdade picture "999"       valid nIdade >= 0 .and. nIdade <= 120
+@ 06, 19 get nPeso  picture "@E 999.99" valid nPeso  >= 0 .and. nPeso  <= 300
 read
 
 @ 09, 02 say "Nome.: "  + cNome
