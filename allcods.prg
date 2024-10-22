@@ -46,4 +46,24 @@ n... := (n... - n...) = variavel recebendo o valor entre subtração de duas var
 n... := (n... * n...) = variavel recebendo o valor entre multiplicação de duas variaveis
 n... := (n... / n...) = variavel recebendo o valor entre divisão de duas variaveis
 fzr do 10
+
+                                        */SPACE
+
+local cNome := Space(40)
+
+/* data
+
+set epoch to 1940                      // Para os 2 digitos fiquem para os anos 2000 e nao 1900 (1940 ~ 2039)
+set date brit .ou. set date to british // Para transformar a data pra igual a nossa
+(nao usar)set century on                         // ao invez de 12 vai ser 2012
+cls
+
+local dAtual      := Date()
+local dNascimento := CTod ("")
+local dFixa       := CTod ("01/01/12")
+
+@ 01, 01 get dNascimento valid dNascimento <= dAtual
+read
+
+
 */
