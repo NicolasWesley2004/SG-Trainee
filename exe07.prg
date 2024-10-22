@@ -12,12 +12,12 @@ cls
 
 @ 01, 01 to 12, 30 double
 @ 02, 10 say "CALCULADORA"
-@ 04, 02 say "Escolha um numero..."
-@ 05, 02 say "Escolha outro numero"
+@ 04, 02 say "Escolha um numero...:"
+@ 05, 02 say "Escolha outro numero:"
 @ 06, 02 to 06, 29
 
-@ 04, 23 get nNumero1 picture "999999"
-@ 05, 23 get nNumero2 picture "999999"
+@ 04, 24 get nNumero1 picture "999999"
+@ 05, 24 get nNumero2 picture "999999"
 read
 
 nSoma          := (nNumero1 + nNumero2)
