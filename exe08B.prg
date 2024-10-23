@@ -1,6 +1,7 @@
+cls
+
 set epoch to 1940
 set date brit
-cls
 
 cNome               := Space(40)
 nIdade              := 0
