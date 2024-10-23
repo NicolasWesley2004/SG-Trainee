@@ -1,14 +1,15 @@
 local getlist := {}
-local cNome   := "       "
+local cNome   := Space(40)
 
 cls
 
-@ 01, 01 TO 06, 72
-@ 02, 02 say "Digite seu nome:"
-@ 03, 02 to 03, 71 double
+@ 01, 01 TO 08, 72
+@ 02, 29 say "REPETICAO DE NOME"
+@ 04, 02 say "Digite seu nome:"
+@ 05, 02 to 05, 71 double
 
-@ 02, 19 get cNome
+@ 04, 19 get cNome picture "@!" valid !Empty(cNome)
 read
 
-@ 05, 02 say Replicate( cNome, 10)
-@ 06, 01 say ""
+@ 07, 02 say Replicate(AllTrim(cNome), 10)
+@ 08, 01 say ""

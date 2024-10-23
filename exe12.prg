@@ -18,7 +18,7 @@ cls
 read
 
 if nNumero1 > nNumero2 .and. nNumero1 > nNumero3
-        @ 09, 02 say "Numero 1 e o maior: " + AllTrim(Str(nNumero1))
+    @ 09, 02 say "Numero 1 e o maior: " + AllTrim(Str(nNumero1))
 elseif nNumero2 > nNumero3
     @ 09, 02 say "Numero 2 e o maior: " + AllTrim(Str(nNumero2))
 elseif nNumero3 > nNumero1

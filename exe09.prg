@@ -26,7 +26,7 @@ cls
 read
 
 @ 11, 02 say "Letra.........: " + cLetra
-@ 12, 02 say "Data..........: " + dData
+@ 12, 02 say "Data..........: " + AllTrim(Transform(dData, "99/99/99"))
 @ 13, 02 say "Numero Inteiro: " + AllTrim(Str(nNumeroInteiro)) 
 @ 14, 02 say "Numero Decimal: " + AllTrim(Transform(nNumeroDecimal, "@e"))
 @ 15, 02 say "Palavra.......: " + cString
