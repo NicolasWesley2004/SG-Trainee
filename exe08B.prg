@@ -82,7 +82,7 @@ nValorTotal    := (nValorTotal + nValorProdutoC)
 @ 17, 02 say "Digite seu endereco..............: "
 @ 18, 02 say "Digite a data da entrega desejada: "
 
-@ 17, 37 get cEndereco picture "@!" valid !Empty(cProdutoA)
+@ 17, 37 get cEndereco picture "@!" valid !Empty(cEndereco)
 @ 18, 37 get dEntrega
 read
 
