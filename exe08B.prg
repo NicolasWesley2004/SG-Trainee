@@ -88,7 +88,6 @@ read
 dEntrega := dEntrega +3
 
 @ 04, 02 clear to 18, 66
-
 @ 04, 31 say "CUPOM"
 @ 06, 02 say AllTrim(cNome)      + ", " + AllTrim(Str(nIdade)) + " anos"
 @ 07, 02 say "DATA DA COMPRA.: " + DToC(dCompra)
