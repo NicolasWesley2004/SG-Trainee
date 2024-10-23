@@ -1,8 +1,8 @@
 local getlist             := {}
 local cNome               := Space(40)
 local nIdade              := 0
-local dDataAtual          := Date()
-local dDataDaCompra       := CToD("")
+local dAtual          := Date()
+local dCompra       := CToD("")
 local cProdutoA           := Space(20)
 local cProdutoB           := Space(20)
 local cProdutoC           := Space(20)
@@ -17,7 +17,7 @@ local nValorProdutoB      := 0
 local nValorProdutoC      := 0
 local nValorTotal         := 0
 local cEndereco           := Space(40)
-local dDataDaEntrega      := CToD("")
+local dEntrega      := CToD("")
 
 set epoch to 1940
 set date brit
@@ -32,10 +32,10 @@ cls
 
 @ 04, 27 get cNome         picture "@!"  valid !Empty(cNome)
 @ 05, 27 get nIdade        picture "999" valid nIdade >= 0 .and. !Empty(nIdade)
-@ 06, 27 get dDataDaCompra               valid dDataDaCompra >= dDataAtual
+@ 06, 27 get dCompra                     valid dCompra >= dAtual
 read
 
-dDataDaEntrega := dDataDaCompra +3
+dEntrega := dCompra +3
 
 @ 08, 02 say "SEQ"
 @ 09, 03 say "1"
@@ -48,7 +48,7 @@ dDataDaEntrega := dDataDaCompra +3
 
 @ 09, 08 get cProdutoA           picture "@!"         valid !Empty(cProdutoA)
 @ 09, 30 get nQuantidadeProdutoA picture "@e, 999.99" valid !Empty(nQuantidadeProdutoA) .and. nQuantidadeProdutoA > 0
-@ 09, 38 get nPrecoProdutoA      picture "@e, 999.99" valid !Empty(nPrecoProdutoA) .and. nPrecoProdutoA >= 0
+@ 09, 38 get nPrecoProdutoA      picture "@e, 999.99" valid !Empty(nPrecoProdutoA)      .and. nPrecoProdutoA >= 0
 read
 
 nValorProdutoA := (nQuantidadeProdutoA * nPrecoProdutoA)
@@ -60,7 +60,7 @@ nValorTotal    := nValorProdutoA
 
 @ 11, 08 get cProdutoB           picture "@!"         valid !Empty(cProdutoB)
 @ 11, 30 get nQuantidadeProdutoB picture "@e, 999.99" valid !Empty(nQuantidadeProdutoB) .and. nQuantidadeProdutoB > 0
-@ 11, 38 get nPrecoProdutoB      picture "@e, 999.99" valid !Empty(nPrecoProdutoB) .and. nPrecoProdutoB >= 0
+@ 11, 38 get nPrecoProdutoB      picture "@e, 999.99" valid !Empty(nPrecoProdutoB)      .and. nPrecoProdutoB >= 0
 read
 
 nValorProdutoB := (nQuantidadeProdutoB * nPrecoProdutoB)
@@ -71,7 +71,7 @@ nValorTotal    := (nValorTotal + nValorProdutoB)
 
 @ 13, 08 get cProdutoC           picture "@!"         valid !Empty(cProdutoC)
 @ 13, 30 get nQuantidadeProdutoC picture "@e, 999.99" valid !Empty(nQuantidadeProdutoC) .and. nQuantidadeProdutoC > 0
-@ 13, 38 get nPrecoProdutoC      picture "@e, 999.99" valid !Empty(nPrecoProdutoC) .and. nPrecoProdutoC >= 0
+@ 13, 38 get nPrecoProdutoC      picture "@e, 999.99" valid !Empty(nPrecoProdutoC)      .and. nPrecoProdutoC >= 0
 read
 
 nValorProdutoC := (nQuantidadeProdutoC * nPrecoProdutoC)
@@ -82,7 +82,7 @@ nValorTotal    := (nValorTotal + nValorProdutoC)
 @ 16, 02 to 16, 66
 
 @ 17, 02 say "Digite seu endereco: "
-@ 18, 02 say "Data da entrega....: " + DToC(dDataDaEntrega)
+@ 18, 02 say "Data da entrega....: " + DToC(dEntrega)
 
 @ 17, 23 get cEndereco picture "@!" valid !Empty(cProdutoA)
 read
@@ -91,7 +91,7 @@ read
 
 @ 04, 31 say "CUPOM"
 @ 06, 02 say AllTrim(cNome)      + ", " + AllTrim(Str(nIdade)) + " anos"
-@ 07, 02 say "DATA DA COMPRA.:"  + DToC(dDataDaCompra)
+@ 07, 02 say "DATA DA COMPRA.: "  + DToC(dCompra)
 @ 09, 02 say AllTrim(cProdutoA)
 @ 09, 20 say ".........: "       + AllTrim(Transform(nValorProdutoA, "@e, 9999999.99"))
 @ 10, 02 say AllTrim(cProdutoB)
@@ -101,5 +101,5 @@ read
 @ 13, 02 say "VALOR TOTAL"
 @ 13, 20 say ".........: "       + AllTrim(Transform(nValorTotal, "@e, 9999999.99"))
 @ 16, 02 say "ENDERECO.......: " + cEndereco
-@ 17, 02 say "DATA DA ENTREGA: " + DToC(dDataDaEntrega)
+@ 17, 02 say "DATA DA ENTREGA: " + DToC(dEntrega)
 @ 21, 02 say ""
