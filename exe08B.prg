@@ -99,6 +99,6 @@ read
 @ 10, 20 say ".........: " + AllTrim(Transform(nValorProdutoC, "@e, 9999999.99"))
 @ 12, 02 say "VALOR TOTAL"
 @ 12, 20 say ".........: " + AllTrim(Transform(nValorTotal, "@e, 9999999.99"))
-@ 15, 02 say cEndereco
-@ 16, 02 say dDataDaEntrega
+@ 15, 02 say "ENDERECO " + cEndereco
+@ 16, 02 say "DATA DA ENTREGA: " + DToC(dDataDaEntrega)
 @ 20, 02 say ""
