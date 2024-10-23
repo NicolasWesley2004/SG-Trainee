@@ -90,15 +90,15 @@ read
 @ 04, 02 clear to 18, 66
 
 @ 04, 31 say "CUPOM"
-@ 06, 02 say AllTrim(cNome)  + ", " + AllTrim(Str(nIdade)) + " anos"
+@ 06, 02 say AllTrim(cNome)      + ", " + AllTrim(Str(nIdade)) + " anos"
 @ 08, 02 say AllTrim(cProdutoA)
-@ 08, 20 say ".........: " + AllTrim(Transform(nValorProdutoA, "@e, 9999999.99"))
+@ 08, 20 say ".........: "       + AllTrim(Transform(nValorProdutoA, "@e, 9999999.99"))
 @ 09, 02 say AllTrim(cProdutoB)
-@ 09, 20 say ".........: " + AllTrim(Transform(nValorProdutoB, "@e, 9999999.99"))
+@ 09, 20 say ".........: "       + AllTrim(Transform(nValorProdutoB, "@e, 9999999.99"))
 @ 10, 02 say AllTrim(cProdutoC)
-@ 10, 20 say ".........: " + AllTrim(Transform(nValorProdutoC, "@e, 9999999.99"))
+@ 10, 20 say ".........: "       + AllTrim(Transform(nValorProdutoC, "@e, 9999999.99"))
 @ 12, 02 say "VALOR TOTAL"
-@ 12, 20 say ".........: " + AllTrim(Transform(nValorTotal, "@e, 9999999.99"))
+@ 12, 20 say ".........: "       + AllTrim(Transform(nValorTotal, "@e, 9999999.99"))
 @ 15, 02 say "ENDERECO.......: " + cEndereco
 @ 16, 02 say "DATA DA ENTREGA: " + DToC(dDataDaEntrega)
 @ 20, 02 say ""
