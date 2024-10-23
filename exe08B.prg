@@ -6,6 +6,7 @@ set date brit
 cNome               := Space(40)
 nIdade              := 0
 dAtual              := Date()
+dAnterior           := Date() -1
 dCompra             := CToD("")
 cProdutoA           := Space(20)
 cProdutoB           := Space(20)
@@ -32,7 +33,7 @@ dEntrega            := CToD("")
 
 @ 04, 27 get cNome   picture "@!"  valid !Empty(cNome)
 @ 05, 27 get nIdade  picture "999" valid nIdade >= 0
-@ 06, 27 get dCompra               valid dCompra >= dAtual
+@ 06, 27 get dCompra               valid dCompra >= dAnterior
 read
 
 @ 08, 02 say "SEQ"
