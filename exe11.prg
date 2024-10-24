@@ -1,10 +1,13 @@
-procedure main ()
-
-local getlist := {}
-local cNome   := Space(40)
-local nIdade  := 0
-
 cls
+
+cNome      := Space(40)
+nIdade     := 0
+cMuitoNovo := "Voce ainda e muito novo"
+cInfantilA := "Voce esta registrado no infantil A"
+cInfantilB := "Voce esta registrado no infantil B"
+cJuvenilA  := "Voce esta registrado no juvenil A"
+cJuvenilB  := "Voce esta registrado no juvenil B"
+cSenior    := "Voce esta registrado no Senior"
 
 @ 01, 01 TO 09, 58 double
 @ 02, 23 say "REGISTRO NATACAO"
@@ -17,17 +20,17 @@ cls
 read
 
 if nIdade <= 4
-    @ 08, 02 say "Voce ainda e muito novo"
-elseif nIdade <= 17
-    @ 08, 02 say "Voce esta registrado no infantil A"
+    @ 08, 02 say cMuitoNovo
+elseif nIdade <= 7
+    @ 08, 02 say cInfantilA
 elseif nIdade <= 10
-    @ 08, 02 say "Voce esta registrado no infantil B"
+    @ 08, 02 say cInfantilB
 elseif nIdade <= 13
-    @ 08, 02 say "Voce esta registrado no juvenil A"
+    @ 08, 02 say cJuvenilA
 elseif nIdade <= 17
-    @ 08, 02 say "Voce esta registrado no juvenil B"
+    @ 08, 02 say cJuvenilB
 elseif nIdade >= 18
-    @ 08, 02 say "Voce esta registrado no Senior"
+    @ 08, 02 say cSenior
 end if
 
 @ 09, 01 say ""

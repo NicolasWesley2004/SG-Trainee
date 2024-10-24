@@ -1,9 +1,9 @@
-/*                                      LIMPAR TELA
+                                                    LIMPAR TELA
 
 cls = limpar tela
 
 
-                                        BORDA DA TELA
+                                                    BORDA DA TELA
 
 @ 01, 01                  = coordenada que vai iniciar a borda
 @ 01, 01 TO 02, 02        = coordenada que vai encerrar a borda
@@ -11,7 +11,7 @@ cls = limpar tela
 @ 01, 01 TO 02, 02 double = borda dupla
 
 
-                                        ESCREVER NA TELA
+                                                    ESCREVER NA TELA
 
 @                              = comando com coordenadas
 @ 01                           = coordenada de linha
@@ -27,9 +27,9 @@ read                           = le o que foi resgatado da tela
 Str(n...)                      = transforma variavel numerica temporariamente em string
 AllTrim(n...)                  = remove espaços extras nos numeros
 AllTrim(Str(n...))             = transformação em string e remoção de espaços nos numeros
+@ 01, 01 say "..." + DToC(dData) // Transforma data em caracter para concatenacao
 
-
-                                        VARIAVEIS
+                                                    VARIAVEIS
 
 local                 = variavel local
 local getlist := {}   = variavel de get
@@ -47,23 +47,54 @@ n... := (n... * n...) = variavel recebendo o valor entre multiplicação de duas
 n... := (n... / n...) = variavel recebendo o valor entre divisão de duas variaveis
 fzr do 10
 
-                                        */SPACE
+                                                    SPACE
 
-local cNome := Space(40)
+local cNome := Space(40) // Determina a quantidade de espacos de caracteres na variavel
+                         // Mais comun para nomes: 40 ou 50
 
-/* data
+                                                    DATA
 
-set epoch to 1940                      // Para os 2 digitos fiquem para os anos 2000 e nao 1900 (1940 ~ 2039)
+set epoch to 1940                      // Para os 2 digitos ficar para os anos 2000 e nao 1900 (1940 ~ 2039)
+                                       // 01/01/40 = 1940 - 01/01/12 = 2012
 set date brit .ou. set date to british // Para transformar a data pra igual a nossa
-(nao usar)set century on                         // ao invez de 12 vai ser 2012
+(nao usar)set century on               // ao invez de 12 vai ser 2012
 cls
 
-local dAtual      := Date()
-local dNascimento := CTod ("")
-local dFixa       := CTod ("01/01/12")
+local dAtual      := Date()                          //
+local dAtual      := Date() + 7                      // suma ou subtrair dias
+local dNascimento := CTod ("")                       //
+local dFixa       := CTod ("01/01/12")               //
 
-@ 01, 01 get dNascimento valid dNascimento <= dAtual
-read
+@ 01, 01 get dNascimento valid dNascimento <= dAtual // validacao para variavel nao ser do mesmo dia
+read                                                 // leitura
 
+                                                    IF
 
-*/
+if nIdade > 18                        // abertura do if e primeira condicao (se nIdade for maior que 18 ...)
+    ...                               // codigo
+elseif nIdade < 10                    // segunda condicao (se nIdade for menor que 10 ...)
+    ...                               // codigo
+elseif nIdade < 10 .and. cSexo == "M" // outra condicao (se n < 10 e c == "M" ...)
+    ...                               // codigo
+else                                  // qualquer outra condicao que nao atendeu as outras (se nIdade nao atender as outras ...)
+    ...                               // codigo
+endif                                 // fechamento do if
+
+if nIdade > 18
+    @ 01, 01 say ""
+    if cSexo == "M"                   //se for > 18 e se c == M ...
+        @ 02, 01 say "M"                
+    else                              // senao ...
+        @ 02, 01 say "F"            
+    endif
+endif
+
+if lMatriculado                       // se a pessoa for matriculada ... (logico nao precisa de condicao)
+    ...
+endif
+
+if lMatriculado                       // se a pessoa nao for matriculada ...
+    ...
+endif
+
+8B, 9, 10, 11, 12 

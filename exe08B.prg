@@ -7,7 +7,7 @@ cNome               := Space(40)
 nIdade              := 0
 dAtual              := Date()
 dAnterior           := Date() -1
-dCompra             := CToD("")
+dCompra             := Date()
 cProdutoA           := Space(20)
 cProdutoB           := Space(20)
 cProdutoC           := Space(20)
@@ -22,7 +22,6 @@ nValorProdutoB      := 0
 nValorProdutoC      := 0
 nValorTotal         := 0
 cEndereco           := Space(20)
-dEntrega            := CToD("")
     
 @ 01, 01 TO 19, 67 double
 @ 02, 26 say "MERCADO TRAINEE"
@@ -55,7 +54,7 @@ nValorTotal    := nValorProdutoA
 
 @ 09, 47 say Transform(nValorProdutoA, "@e 9999999.99")
 @ 15, 34 say "VALOR TOTAL:"
-@ 15, 47 say Transform(nValorTotal, "@e 9999999.99")
+@ 15, 47 say Transform(nValorTotal,    "@e 9999999.99")
 
 @ 11, 08 get cProdutoB           picture "@!"        valid !Empty(cProdutoB)
 @ 11, 30 get nQuantidadeProdutoB picture "@e 999.99" valid nQuantidadeProdutoB > 0
@@ -66,7 +65,7 @@ nValorProdutoB := (nQuantidadeProdutoB * nPrecoProdutoB)
 nValorTotal    := (nValorTotal + nValorProdutoB)
 
 @ 11, 47 say Transform(nValorProdutoB, "@e 9999999.99")
-@ 15, 47 say Transform(nValorTotal, "@e 9999999.99")
+@ 15, 47 say Transform(nValorTotal,    "@e 9999999.99")
 
 @ 13, 08 get cProdutoC           picture "@!"        valid !Empty(cProdutoC)
 @ 13, 30 get nQuantidadeProdutoC picture "@e 999.99" valid nQuantidadeProdutoC > 0
@@ -77,30 +76,30 @@ nValorProdutoC := (nQuantidadeProdutoC * nPrecoProdutoC)
 nValorTotal    := (nValorTotal + nValorProdutoC)
 
 @ 13, 47 say Transform(nValorProdutoC, "@e 9999999.99")
-@ 15, 47 say Transform(nValorTotal, "@e 9999999.99")
+@ 15, 47 say Transform(nValorTotal,    "@e 9999999.99")
 @ 16, 02 to 16, 66
 
 @ 17, 02 say "Digite seu endereco..............: "
 @ 18, 02 say "Digite a data da entrega desejada: "
 
 @ 17, 37 get cEndereco picture "@!" valid !Empty(cEndereco)
-@ 18, 37 get dEntrega
+@ 18, 37 get dCompra                valid dCompra >= dAtual
 read
 
-dEntrega := dEntrega +3
+dEntrega := dCompra +3
 
 @ 04, 02 clear to 18, 66
 @ 04, 31 say "CUPOM"
 @ 06, 02 say AllTrim(cNome)      + ", " + AllTrim(Str(nIdade)) + " anos"
 @ 07, 02 say "DATA DA COMPRA.: " + DToC(dCompra)
 @ 09, 02 say AllTrim(cProdutoA)
-@ 09, 20 say ".........: "       + Transform(nValorProdutoA, "@e 9999999.99")
+@ 09, 20 say ".........: "       + Transform(nValorProdutoA, "@e")
 @ 10, 02 say AllTrim(cProdutoB)
-@ 10, 20 say ".........: "       + Transform(nValorProdutoB, "@e 9999999.99")
+@ 10, 20 say ".........: "       + Transform(nValorProdutoB, "@e")
 @ 11, 02 say AllTrim(cProdutoC)
-@ 11, 20 say ".........: "       + Transform(nValorProdutoC, "@e 9999999.99")
+@ 11, 20 say ".........: "       + Transform(nValorProdutoC, "@e")
 @ 13, 02 say "VALOR TOTAL"
-@ 13, 20 say ".........: "       + Transform(nValorTotal, "@e 9999999.99")
+@ 13, 20 say ".........: "       + Transform(nValorTotal,    "@e")
 @ 16, 02 say "ENDERECO.......: " + cEndereco
 @ 17, 02 say "DATA DA ENTREGA: " + DToC(dEntrega)
 @ 21, 02 say ""
