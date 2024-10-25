@@ -1,11 +1,12 @@
-procedure main ()
-
-local getlist  := {}
-local nNumero1 := 0
-local nNumero2 := 0
-local nNumero3 := 0
-
 cls
+
+nNumero1       := 0
+nNumero2       := 0
+nNumero3       := 0
+cNumero1Maior  := "Numero 1 e o maior"
+cNumero2Maior  := "Numero 2 e o maior"
+cNumero3Maior  := "Numero 3 e o maior"
+cNumerosIguais := "Todos sao iguais"
 
 @ 01, 01 TO 10, 28 double
 @ 02, 02 say "COMPARACAO ENTRE 3 NUMEROS"
@@ -17,14 +18,14 @@ cls
 @ 06, 24 get nNumero3 picture "999"
 read
 
-if nNumero1 > nNumero2 .and. nNumero1 > nNumero3
-    @ 09, 02 say "Numero 1 e o maior: " + AllTrim(Str(nNumero1))
-elseif nNumero2 > nNumero3
-    @ 09, 02 say "Numero 2 e o maior: " + AllTrim(Str(nNumero2))
-elseif nNumero3 > nNumero1
-    @ 09, 02 say "Numero 3 e o maior: " + AllTrim(Str(nNumero3))
-elseif nNumero1 = nNumero2 .and. nNumero1 = nNumero3
-    @ 09, 02 say "Todos sao iguais"
+if     nNumero1 > nNumero2 .and. nNumero1 > nNumero3
+    @ 09, 02 say cNumero1Maior
+elseif nNumero2 > nNumero1 .and. nNumero2 > nNumero3
+    @ 09, 02 say cNumero2Maior
+elseif nNumero3 > nNumero1 .and. nNumero3 > nNumero2
+    @ 09, 02 say cNumero3Maior
+else
+    @ 09, 02 say cNumerosIguais
 end if
 
 @ 10, 01 say ""

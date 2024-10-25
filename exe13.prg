@@ -1,7 +1,12 @@
-local getlist := {}
-local nCodigo := 0
+cls
 
-cls 
+nCodigo            := 0 
+cCodigoInvalido    := "CODIGO INVALIDO"
+cNaoPerecivel      := "Produto Alimento nao-perecivel selecionado"
+cPerecivel         := "Produto Alimento perecivel selecionado"
+cVestuario         := "Produto Vestuario selecionado"
+cHigienePessoal    := "Produto Higiene pessoal selecionado"
+cLimpezaUtencilios := "Produto Limpeza e utensilios domesticos selecionado"
 
 @ 01, 01 TO 15, 53 double
 @ 02, 17 say "PRODUTOS QUALIFICADOS"
@@ -20,26 +25,27 @@ cls
 @ 10, 02 say "8 a 15"
 @ 10, 10 say "Limpeza e utensilios domesticos"
 
+
 @ 11, 02 to 11, 52 double
 @ 12, 02 say "Digite o codigo do produto:"
 
 @ 12, 30 get nCodigo picture "99"
 read
 
-if nCodigo == 0
-    @ 14, 02 say "CODIGO INVALIDO"
+if nCodigo == 0 
+    @ 14, 02 say cCodigoInvalido
 elseif nCodigo == 1
-    @ 14, 02 say "Produto Alimento nao-perecivel selecionado"
+    @ 14, 02 say cNaoPerecivel
 elseif nCodigo <= 4
-    @ 14, 02 say "Produto Alimento perecivel selecionado"
-elseif nCodigo <= 6
-    @ 14, 02 say "Produto Vestuario selecionado"
+    @ 14, 02 say cPerecivel
+elseif nCodigo <=6
+    @ 14, 02 say cVestuario
 elseif nCodigo == 7
-    @ 14, 02 say "Produto Higiene pessoal selecionado"
+    @ 14, 02 say cHigienePessoal
 elseif nCodigo <= 15
-    @ 14, 02 say "Produto Limpeza e utensilios domesticos selecionado"
-elseif nCodigo >= 15
-    @ 14, 02 say "CODIGO INVALIDO"
+    @ 14, 02 say cLimpezaUtencilios
+else
+    @ 14, 02 say cCodigoInvalido
 end if
 
 @ 15, 01 say ""
