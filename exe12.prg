@@ -8,7 +8,7 @@ cNumero2Maior  := "Numero 2 e o maior"
 cNumero3Maior  := "Numero 3 e o maior"
 cNumerosIguais := "Todos sao iguais"
 
-@ 01, 01 TO 10, 28 double
+@ 01, 01 to 10, 28 double
 @ 02, 02 say "COMPARACAO ENTRE 3 NUMEROS"
 @ 05, 02 say "Me diga tres numeros:"
 @ 07, 02 to 07, 27 double
@@ -18,14 +18,14 @@ cNumerosIguais := "Todos sao iguais"
 @ 06, 24 get nNumero3 picture "999"
 read
 
-if     nNumero1 > nNumero2 .and. nNumero1 > nNumero3
-    @ 09, 02 say cNumero1Maior
-elseif nNumero2 > nNumero1 .and. nNumero2 > nNumero3
+if nNumero1 > nNumero2
+    if nNumero1 > nNumero3
+        @ 09, 02 say cNumero1Maior
+    endif
+elseif nNumero2 > nNumero3
     @ 09, 02 say cNumero2Maior
-elseif nNumero3 > nNumero1 .and. nNumero3 > nNumero2
-    @ 09, 02 say cNumero3Maior
 else
-    @ 09, 02 say cNumerosIguais
-end if
+    @ 09, 02 say cNumero3Maior
+endif
 
 @ 10, 01 say ""
