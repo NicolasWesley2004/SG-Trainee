@@ -116,6 +116,23 @@ set color to "n/w"             // configura essas cores para tudo que esta em ba
 @ 05, 05 clear to 08, 08
 
 
-InKey(0) // pausar (o numero = segundo (0 = clicar novamente))
+InKey(0) // pausar (o numero = segundos (0 = clicar novamente))
 
-8B2, 11, 12, 13 
+//
+
+cMateriaDp := cMateriaDp + "-" + cMateria
+           += "," + cMateria
+
+//
+
+dExemplo   := Date()
+nAno       := Year(dExemplo)   // 2024
+nMes       := Mounth(dExemplo) // 10
+nDia       := Day(dExemplo)    // 28
+nDiaSemana := DoW(dExemplo)    // 2
+1 - dom
+2 - seg
+...
+7 - sab
+
+prova, execabe, 
