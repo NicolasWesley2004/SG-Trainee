@@ -52,5 +52,6 @@ elseif nDiaSemana == 7
 endif
 
 @ 01, 01 to 03, 49 double
+set color to "n/w"
 @ 02, 02 say "Maringa," + Str(nDia) + " de " + cMes + " de" + Str(nAno) + ". (" + cDiaSemana + ")"
 @ 03, 01 say ""

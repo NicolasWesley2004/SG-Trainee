@@ -135,4 +135,18 @@ nDiaSemana := DoW(dExemplo)    // 2
 ...
 7 - sab
 
-prova, execabe, 
+//
+
+// $ = contido
+
+'a'   $ 'bca' // sim
+'a'   $ 'BCA' // nao
+'ca'  $ 'bca' // sim
+'aBc' $ 'abc' // nao
+
+'a' = 'A'     // sim
+'a' != 'A'    // nao
+
+'a' == 'A'    // nao 
+!('a' == 'A') // sim
+, 
