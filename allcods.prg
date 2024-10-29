@@ -1,46 +1,23 @@
-                                                    LIMPAR O CODIGO
+                                                    CODE OPENING
 
-cls // limpar o codigo
+cls // clear the code
+                                                    
+
+                                                    PAGE STYLE
+
+@ 01, 01 to 02, 02        // border and line create (line, column)
+@ 01, 01 to 02, 02        // simple border
+@ 01, 01 to 02, 02 double // double border
+@ 01, 01 clear to 02, 02  // clear the page
 
 
-                                                    BORDA DA TELA
+                                                    VARIABLES
 
-@ 01, 01                  // coordenada que vai iniciar a borda
-@ 01, 01 to 02, 02        // coordenada que vai encerrar a borda
-@ 01, 01 to 02, 02        // borda simples
-@ 01, 01 to 02, 02 double // borda dupla
-@ 01, 01 clear to 02, 02  // limpa a tela
-
-
-                                                    ESCREVER NA TELA
-
-@ 01, 01                               // coordenada de linha e coluna
-@ 01, 01 say                           // escrever
-@ 01, 01 say ""                        // escrever com string
-@ 01, 01 say n...                      // escrever com variavel
-@ 01, 01 say "" + c...                 // concatenação de string e variavel c (concatenacao sempre do mesmo valor)
-@ 01, 01 say Replicate( "", 2)         // replica de um valor em n vezes
-@ 01, 01 say "" + Str(n...)            // transforma variavel numerica temporariamente em string para concatenacao com string
-@ 01, 01 say AllTrim(n...)             // remove espaços extras nos numeros
-@ 01, 01 say AllTrim(Str(n...))        // transformação em string e remoção de espaços nos numeros
-@ 01, 01 say Transform(n..., "")       // transforma uma variavel em c e molda
-@ 01, 01 say Transform(n..., "@e")     // transforma todos . de decimais para ,
-@ 01, 01 say Transform(n..., "999.99") // determina a quantidade de espaco para a variavel (999 = 3) (999.99 = 6 (ponto conta como 1))
-
-@ 01, 01 get                           // recebe um valor na tela
-@ 01, 01 get n...                      // recebe um valor do tipo determinado pela variavel
-read                                   // le o que foi resgatado da tela
-@ 01, 01 say "..." + DToC(dData)       // Transforma data em caracter para concatenacao
-
-                                                    VARIAVEIS
-
-local                     // variavel no local
-local getlist := {}       // variavel de get
-local nNumero             // toda variavel comeca com letra minuscula para identificacao do valor e continua com uma maiuscula
-local n...                // variavel numerica
-local c...                // variavel string/caracter
-local d...                // variavel data
-local l...                // variavel logica
+nNumero                   // every variable starts with a lowercase letter to identify the value and continues with an uppercase letter
+n...                      // variavel numerica
+c...                      // variavel string/caracter
+d...                      // variavel data
+l...                      // variavel logica
 n... := 0                 // variavel recebendo numero (com 10 casas ao todo)
 n... := n...              // variavel recebendo variavel
 n... := (n... + n...)     // variavel recebendo o valor entre soma de duas variaveis
@@ -53,6 +30,25 @@ d... := Date()            // variavel iniciando com data da maquina
 d... := Date() + 7        // soma ou subtracao de dias
 d... := CTod ("")         // variavel iniciando transformando caracter em data (iniciando vazia)
 d... := CTod ("01/01/12") // variavel iniciando com data pre selecionada
+
+
+                                                    WRITE ON THE PAGE
+
+@ 01, 01 say ""                        // write with string
+@ 01, 01 say n...                      // write with variable
+@ 01, 01 say "" + c...                 // string and variable c concatenation in the say (concatenation always of the same value)
+@ 01, 01 say "" + Str(n...)            // transform numeric variable in string for concatenation
+@ 01, 01 say AllTrim(n...)             // remove extra space in numbers
+@ 01, 01 say AllTrim(Str(n...))        // transformação em string e remoção de espaços nos numeros
+@ 01, 01 say Transform(n..., "")       // transforma uma variavel em c e molda
+@ 01, 01 say Transform(n..., "@e")     // transforma todos . de decimais para ,
+@ 01, 01 say Transform(n..., "999.99") // determina a quantidade de espaco para a variavel (999 = 3) (999.99 = 6 (ponto conta como 1))
+
+@ 01, 01 get                           // recebe um valor na tela
+@ 01, 01 get n...                      // recebe um valor do tipo determinado pela variavel
+read                                   // le o que foi resgatado da tela
+@ 01, 01 say "..." + DToC(dData)       // Transforma data em caracter para concatenacao
+
 
                                                     SPACE
 
