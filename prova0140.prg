@@ -1,3 +1,5 @@
+procedure main()
+
 cls
 
 set epoch to 1940
@@ -114,3 +116,21 @@ read
 @ 18, 65 get nNotaDisc3Bi4  picture "999" valid nNotaDisc3Bi4 >= 0 .and. nNotaDisc3Bi4 <= 100
 @ 19, 65 get nFaltaDisc3Bi4 picture "999" valid nFaltaDisc3Bi4 >= 0
 read
+
+nMediaDisc1 := (nNotaDisc1Bi1 + nNotaDisc1Bi2 + nNotaDisc1Bi3 + nNotaDisc1Bi4)
+nMediaDisc1 := (nMediaDisc1 / 4)
+nMediaDisc2 := (nNotaDisc2Bi1 + nNotaDisc2Bi2 + nNotaDisc2Bi3 + nNotaDisc2Bi4)
+nMediaDisc2 := (nMediaDisc2 / 4)
+nMediaDisc3 := (nNotaDisc3Bi1 + nNotaDisc3Bi2 + nNotaDisc3Bi3 + nNotaDisc3Bi4)
+nMediaDisc3 := (nMediaDisc3 / 4)
+nMediaDisc4 := (nNotaDisc4Bi1 + nNotaDisc4Bi2 + nNotaDisc4Bi3 + nNotaDisc4Bi4)
+nMediaDisc4 := (nMediaDisc4w / 4)
+
+if nSerie <= 4
+    if nMediaDisc1 < 60
+        @ 21, 02 say "MATERIA: " + cDisciplina1 + " APROVADO!"
+    else
+        @ 21, 02 say "MATERIA: " + cDisciplina1 + " REPROVADO!"
+    endif
+endif
+return
