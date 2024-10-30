@@ -1,15 +1,24 @@
-local getlist := {}
-local cNome   := Space(40)
-
 cls
 
-@ 01, 01 TO 08, 72
-@ 02, 29 say "REPETICAO DE NOME"
-@ 04, 02 say "Digite seu nome:"
-@ 05, 02 to 05, 71 double
+do while .t.
+    cNome      := Space(10)
+    nRepeticao := 0
+    nLinha     := 4
 
-@ 04, 19 get cNome picture "@!" valid !Empty(cNome)
-read
+    @ 01, 01 to 14, 30 double
+    @ 02, 02 say "DIGITE SEU NOME:"
 
-@ 07, 02 say Replicate(AllTrim(cNome), 10)
-@ 08, 01 say ""
+    @ 02, 19 get cNome picture "@!" valid !Empty(cNome)
+    read
+
+    do while nRepeticao < 10
+        @ nLinha++, 02 say AllTrim(Str(nRepeticao)) + " " + cNome
+        nRepeticao++
+    enddo
+
+    if LastKey() == 27
+        exit
+    endif
+
+    @ 14, 01 say ""
+enddo

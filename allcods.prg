@@ -5,25 +5,30 @@ cls // clear the code
 
                                                     PAGE STYLE
 
-@ 01, 01 to 02, 02        // border and line create (line, column)
-@ 01, 01 to 02, 02        // simple border
-@ 01, 01 to 02, 02 double // double border
-@ 01, 01 clear to 02, 02  // clear the page
+@ 01, 01 to 02, 02         // border and line create (line, column)
+@ nLine, nBorder to 02, 02 // border and line with variables
+@ 01, 01 to 02, 02         // simple border
+@ 01, 01 to 02, 02 double  // double border
+@ 01, 01 clear to 02, 02   // clear the page
 
 
                                                     VARIABLES
 
 nNumero                   // every variable starts with a lowercase letter to identify the value and continues with an uppercase letter
-n...                      // variavel numerica
-c...                      // variavel string/caracter
-d...                      // variavel data
-l...                      // variavel logica
-n... := 0                 // variavel recebendo numero (com 10 casas ao todo)
-n... := n...              // variavel recebendo variavel
+
+                                                    //NUMERIC VARIABLE
+
+n...                      // numerical variable
+n... := 0                 // variable receiving numerical value (with 10 spaces / extra)
+n... := n...              // variable receiving variable
 n... := (n... + n...)     // variavel recebendo o valor entre soma de duas variaveis
 n... := (n... - n...)     // variavel recebendo o valor entre subtração de duas variaveis
 n... := (n... * n...)     // variavel recebendo o valor entre multiplicação de duas variaveis
 n... := (n... / n...)     // variavel recebendo o valor entre divisão de duas variaveis
+
+c...                      // string/character variable
+d...                      // date variable
+l...                      // logic variable
 c... := ""                // variavel recebendo string
 c... := Space(40)         // determinando o espaco em uma variavel c (nome: comun entre 40 e 50)
 d... := Date()            // variavel iniciando com data da maquina
@@ -131,18 +136,73 @@ nDiaSemana := DoW(dExemplo)    // 2
 ...
 7 - sab
 
+
+                                                    COMPARISON OPERATORS
+
+
+=  // igual a
+== // exatamente igual a                                                    
+>  // maior que
+<  // menor que
+>= // maior ou igual a
+<= // menor ou igual a
+!= // diferente de
+$  // contido em
+
+'a'   $ 'bca' // y
+'a'   $ 'BCA' // n
+'ca'  $ 'bca' // y
+'aBc' $ 'abc' // n
+
+'a' = 'A'     // y
+'a' != 'A'    // n
+
+'a' == 'A'    // n 
+!('a' == 'A') // y
+
+
 //
 
-// $ = contido
+<code>
 
-'a'   $ 'bca' // sim
-'a'   $ 'BCA' // nao
-'ca'  $ 'bca' // sim
-'aBc' $ 'abc' // nao
+do while <condition> // faca enquanto 
+    <code>
+    do while <condition>
+        <code>
+        if <condition>
+            <code>
+        endif
+    enddo
+enddo
 
-'a' = 'A'     // sim
-'a' != 'A'    // nao
+do while .t.
+    //idade
+    if nIdade < 18
+        exit
+    else
+        loop
+    endif
+enddo
 
-'a' == 'A'    // nao 
-!('a' == 'A') // sim
-, 
+do while .t.         // 1
+    do while .t.     // 2
+        exit         // sai da 2 e vai pra 1
+        do while .t. // 3
+            exit     // sai da 3 e vai pra 2
+        enddo
+    enddo
+    exit             // sai da 1
+enddo
+
+
+n := n + 1
+n += 1
+n++
+
+
+if LastKey() == 27
+    exit
+endif
+
+
+15, 16, 2, 3, 5, 6, 7

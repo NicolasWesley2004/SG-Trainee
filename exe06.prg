@@ -1,12 +1,11 @@
-procedure main ()
-
-local getlist := {}
-local nNota1  := 0
-local nNota2  := 0
-local nNota3  := 0
-local nMedia  := 0
-
 cls
+
+nNota1  := 0
+nNota2  := 0
+nNota3  := 0
+nMedia  := 0
+
+do while .t.
 
 @ 01, 01 to 10, 39 double
 @ 02, 14 say "MEDIA DE NOTAS"
@@ -24,3 +23,9 @@ nMedia := ((nNota1 + nNota2 + nNota3) / 3)
 
 @ 09, 02 say "A sua media foi: " + AllTrim(Transform(nMedia, "@E"))
 @ 10, 01 say ""
+
+if LastKey() == 27
+    exit
+endif
+
+enddo

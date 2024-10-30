@@ -1,18 +1,21 @@
-local getlist     := {}
-local cNome       := Space(37)
-local nRepeticoes := 0
-
 cls
 
-@ 01, 01 TO 09, 79
-@ 02, 26 say "REPETICAO DE NOME COM ESCOLHA"
-@ 04, 02 say "Digite seu nome.......................:"
-@ 05, 02 say "Quantas vezes devemos repetir seu nome?"
-@ 06, 02 to 06, 78 double
+cNome                := Space(10)
+nQuantidadeRepeticao := 0
+nRepeticao           := 0
+nLinha               := 4
 
-@ 04, 42 get cNome       picture "@!" valid !Empty(cNome)
-@ 05, 42 get nRepeticoes picture "99"
+@ 01, 01 to 23, 40 double
+@ 02, 02 say "DIGITE SEU NOME..........:"
+@ 03, 02 say "DESEJA QUANTAS REPETICOES?"
+
+@ 02, 29 get cNome                picture "@!" valid !Empty(cNome)
+@ 03, 29 get nQuantidadeRepeticao picture "99" valid nQuantidadeRepeticao < 20
 read
 
-@ 08, 02 say Replicate(AllTrim(cNome), nRepeticoes)
-@ 09, 01 say ""
+do while nRepeticao < nQuantidadeRepeticao
+    @ nLinha++, 02 say AllTrim(Str(nRepeticao)) + " " + cNome
+    nRepeticao++
+enddo
+
+@ 23, 01 say ""
