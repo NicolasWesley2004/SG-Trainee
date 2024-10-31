@@ -1,5 +1,5 @@
 // NICOLAS WESLEY FELICIO ROSSI
-
+procedure main()
 cls
 
 set epoch to 1940
@@ -46,7 +46,7 @@ read
 
 nAnoDataCotacao := Year(dCotacao)
 nPrimeiraCNH    := (nIdade - 18)
-nAnoCNH         := (nAnoDataCotacao - nPrimeiraCNH) // rever
+nAnoCNH         := (nAnoDataCotacao - nPrimeiraCNH)
                     
 @ 04, 22 get nAnoPrimeiraCNH picture "9999" valid nAnoPrimeiraCNH >= nAnoCNH .and. nAnoPrimeiraCNH <= nAnoDataCotacao
 read
@@ -167,14 +167,21 @@ if nMesDataCotacao == 9
     nLiquidoSeguro2 -= nValor8porcento
 endif
 
-nValorSeguro1Mes := nValorSeguro1 + nLiquidoSeguro1
-nValorSeguro2Mes := nValorSeguro2 + nLiquidoSeguro2
-nValorSeguro1Tri := nValorSeguro1Mes / 3
-nValorSeguro2Tri := nValorSeguro2Mes / 3
-nValorSeguro1Ano := nValorSeguro1Mes / 12
-nValorSeguro2Ano := nValorSeguro2Mes / 12
+nValorSeguro1Ano := nValorSeguro1 + nLiquidoSeguro1
+nValorSeguro2Ano := nValorSeguro2 + nLiquidoSeguro2
+nValorSeguro1Tri := nValorSeguro1Ano / 4
+nValorSeguro2Tri := nValorSeguro2Ano / 4
+nValorSeguro1Mes := nValorSeguro1Ano / 12
+nValorSeguro2Mes := nValorSeguro2Ano / 12
 
 @ 01, 01 clear to 08, 78
+
+if nValorSeguro1Mes > nValorSeguro2Mes
+    @ 01, 01 to color 07, 30 "b/w"
+else
+    @ 01, 32 to color 07, 61 "b/w"
+endif
+
 @ 01, 01 to 07, 30
 @ 02, 02 say "SEGUROS E CIA"
 @ 03, 02 to 03, 29
@@ -188,9 +195,11 @@ nValorSeguro2Ano := nValorSeguro2Mes / 12
 @ 02, 33 say "AUTO SEGUROS S A"
 @ 03, 33 to 03, 60
 @ 04, 33 say "Mensal.....:"
-@ 04, 45 say nValorSeguro1Mes
+@ 04, 45 say nValorSeguro2Mes
 @ 05, 33 say "Trimestral.:"
-@ 05, 45 say nValorSeguro1Tri
+@ 05, 45 say nValorSeguro2Tri
 @ 06, 33 say "Anual......:"
-@ 06, 45 say nValorSeguro1Ano
+@ 06, 45 say nValorSeguro2Ano
 @ 09, 02 say "Cotacao valida ate"
+
+return
