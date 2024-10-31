@@ -146,7 +146,7 @@ endif
 if cTipoVeiculo == "E"
     nLiquidoSeguro2 += nValor15porcento
 elseif cTipoVeiculo == "L"
-    nLiquidoSeguro2 += nValo18porcento
+    nLiquidoSeguro2 += nValor18porcento
 endif
 if nMotor >= 1.5
     nLiquidoSeguro2 += nValor10porcento
@@ -167,12 +167,12 @@ if nMesDataCotacao == 9
     nLiquidoSeguro2 -= nValor8porcento
 endif
 
-nValorSeguro1Mes := nLiquidoSeguro1
-nValorSeguro2Mes := nLiquidoSeguro2
-nValorSeguro1Tri := nValorSeguro1Mes * 3
-nValorSeguro2Tri := nValorSeguro2Mes * 3
-nValorSeguro1Ano := nValorSeguro1Mes * 12
-nValorSeguro2Ano := nValorSeguro2Mes * 12
+nValorSeguro1Mes := nValorSeguro1 + nLiquidoSeguro1
+nValorSeguro2Mes := nValorSeguro2 + nLiquidoSeguro2
+nValorSeguro1Tri := nValorSeguro1Mes / 3
+nValorSeguro2Tri := nValorSeguro2Mes / 3
+nValorSeguro1Ano := nValorSeguro1Mes / 12
+nValorSeguro2Ano := nValorSeguro2Mes / 12
 
 @ 01, 01 clear to 08, 78
 @ 01, 01 to 07, 30
