@@ -1,5 +1,4 @@
 // NICOLAS WESLEY FELICIO ROSSI
-procedure main()
 cls
 
 set epoch to 1940
@@ -75,6 +74,8 @@ read
 
 nValorSeguro1    := ((nValor * 6) / 100) // 1000, 60
 nValorSeguro2    := ((nValor * 7) / 100)
+nLiquidoSeguro1  := 0
+nLiquidoSeguro2  := 0
 nTempoHabilitado := (nAnoDataCotacao - nAnoPrimeiraCNH)
 nValor05porcento := ((nValorSeguro1 * 0.5) / 100)
 nValor08porcento := ((nValorSeguro1 * 0.8) / 100)
@@ -90,7 +91,7 @@ nMesDataCotacao  := Month(dCotacao)
 
 // seguro 1
 if nIdade < 25 .or. nIdade > 65
-    nLiquidoSeguro1 := nValor10porcento
+    nLiquidoSeguro1 += nValor10porcento
     if cSexo == "M"
         nLiquidoSeguro1 += nValor10porcento
     else
@@ -129,7 +130,7 @@ endif
 // seguro 2
 
 if nIdade < 23 .or. nIdade > 60
-    nLiquidoSeguro2 := nValor15porcento
+    nLiquidoSeguro2 += nValor15porcento
 elseif nIdade >= 30 .and. nIdade <= 50
     nLiquidoSeguro2 -= nValor8porcento
 endif
@@ -176,12 +177,6 @@ nValorSeguro2Mes := nValorSeguro2Ano / 12
 
 @ 01, 01 clear to 08, 78
 
-if nValorSeguro1Mes > nValorSeguro2Mes
-    @ 01, 01 to color 07, 30 "b/w"
-else
-    @ 01, 32 to color 07, 61 "b/w"
-endif
-
 @ 01, 01 to 07, 30
 @ 02, 02 say "SEGUROS E CIA"
 @ 03, 02 to 03, 29
@@ -201,5 +196,3 @@ endif
 @ 06, 33 say "Anual......:"
 @ 06, 45 say nValorSeguro2Ano
 @ 09, 02 say "Cotacao valida ate"
-
-return

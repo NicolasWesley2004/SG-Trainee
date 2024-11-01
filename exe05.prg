@@ -1,10 +1,9 @@
 cls
 
-nNumeroA := 0
-nNumeroB := 0
-nNumeroC := 0
-
 do while .t.
+    nNumeroA := 0
+    nNumeroB := 0
+    nNumeroC := 0
 
     @ 01, 01 to 10, 18 double
     @ 02, 02 say "TROCA DE NUMEROS"
@@ -15,6 +14,14 @@ do while .t.
     @ 04, 13 get nNumeroA picture "999"
     @ 05, 13 get nNumeroB picture "999"
     read
+
+    if LastKey() == 27
+        nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
+        if nOpcao == 1
+            exit
+        endif
+        loop
+    endif
 
     nNumeroC := nNumeroA
     nNumeroA := nNumeroB

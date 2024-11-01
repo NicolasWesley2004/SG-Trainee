@@ -1,10 +1,9 @@
 cls
 
-nNumero1 := 0
-nNumero2 := 0
-nProduto := 0
-
 do while .t.
+    nNumero1 := 0
+    nNumero2 := 0
+    nProduto := 0
 
     @ 01, 01 to 09, 33 double
     @ 02, 08 say "CALCULO DO PRODUTO"
@@ -15,6 +14,14 @@ do while .t.
     @ 04, 24 get nNumero1 picture "999"
     @ 05, 24 get nNumero2 picture "999"
     read
+
+    if LastKey() == 27
+        nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
+        if nOpcao == 1
+            exit
+        endif
+        loop
+    endif
 
     nProduto := (nNumero1 * nNumero2)
 

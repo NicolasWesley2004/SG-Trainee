@@ -1,13 +1,8 @@
 cls
 
-nNumero1       := 0
-nNumero2       := 0
-nSoma          := 0
-nSubtracao     := 0
-nMultiplicacao := 0
-nDivisao       := 0
-
 do while .t.
+    nNumero1       := 0
+    nNumero2       := 0
 
     @ 01, 01 to 12, 32 double
     @ 02, 10 say "CALCULADORA"
@@ -18,6 +13,14 @@ do while .t.
     @ 04, 24 get nNumero1 picture "999999"
     @ 05, 24 get nNumero2 picture "999999"
     read
+
+    if LastKey() == 27
+        nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
+        if nOpcao == 1
+            exit
+        endif
+        loop
+    endif
 
     nSoma          := (nNumero1 + nNumero2)
     nSubtracao     := (nNumero1 - nNumero2)

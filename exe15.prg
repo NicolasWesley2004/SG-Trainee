@@ -11,6 +11,14 @@ do while .t.
     @ 02, 19 get cNome picture "@!" valid !Empty(cNome)
     read
 
+    if LastKey() == 27
+        nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
+        if nOpcao == 1
+            exit
+        endif
+        loop
+    endif
+
     do while nRepeticao < 10
         @ nLinha++, 02 say AllTrim(Str(nRepeticao)) + " " + cNome
         nRepeticao++
