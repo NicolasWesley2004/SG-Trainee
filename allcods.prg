@@ -204,5 +204,34 @@ if LastKey() == 27
     exit
 endif
 
+//
 
-15, 16, 2, 3, 5, 6, 7
+cNota := Space(1) // A-F
+@ 01, 01 get cNota picture "@!" valid cNota $ "ABCDEF"
+read
+
+cEstado := Space(2)
+@ 01, 01 get cEstado picture "@!" valid cEstado $ "PR|RR|SP|RJ|MT"
+read
+
+//
+
+cNome    := Space(20)
+nTamanho := Len(cNome) // 20
+
+@ 01, 01 get cNome picture "@!" valid !Empty(cNome)
+read // Nicolas Wesley
+
+nTamanho := Len(cNome) // 20
+cNome    := AllTrim(cNome)  
+nTamanho := Len(cNome) // 14
+
+cPrimeiroNome := SubStr(cNome, 1, 7) // Nicolas
+nTamanho      := Len(cPN)            // 2
+
+cPrimeiroNome := SubStr(cNome, 11, 2) // sl
+nTamanho      := Len(cPN)             // 2
+
+//
+
+prova 02 and 03, 

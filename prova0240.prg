@@ -40,7 +40,7 @@ read
 
 @ 02, 22 get cNome           picture "@!"   valid !Empty(cNome)
 @ 02, 64 get nIdade          picture "999"  valid nIdade >= 18
-@ 03, 22 get cSexo           picture "@!"   valid cSexo == "M" .or. cSexo == "F"
+@ 03, 22 get cSexo           picture "@!"   valid cSexo $ "ML"
 read
 
 nAnoDataCotacao := Year(dCotacao)
@@ -64,116 +64,106 @@ read
 
 @ 02, 22 get cMarca         picture "@!"              valid !Empty(cMarca)
 @ 03, 22 get nAnoFabricacao picture "9999"            valid nAnoFabricacao <= nAnoDataCotacao .and. nAnoFabricacao > 1900
-@ 04, 22 get cTipoVeiculo   picture "@!"              valid cTipoVeiculo == "P" .or. cTipoVeiculo == "E" .or. cTipoVeiculo == "L"
+@ 04, 22 get cTipoVeiculo   picture "@!"              valid cTipoVeiculo $ "PEL"
 @ 05, 22 get nMotor         picture "9.9"             valid nMotor >= 1
 @ 06, 22 get nValor         picture "@e 9,999,999.99" valid nValor > 0
-@ 07, 22 get cUsoVeiculo    picture "@!"              valid cUsoVeiculo == "P" .or. cUsoVeiculo == "O"
+@ 07, 22 get cUsoVeiculo    picture "@!"              valid cUsoVeiculo $ "PO"
 read
 
 // variaveis
 
-nValorSeguro1    := ((nValor * 6) / 100) // 1000, 60
-nValorSeguro2    := ((nValor * 7) / 100)
-nLiquidoSeguro1  := 0
-nLiquidoSeguro2  := 0
-nTempoHabilitado := (nAnoDataCotacao - nAnoPrimeiraCNH)
-nValor05porcento := ((nValorSeguro1 * 0.5) / 100)
-nValor08porcento := ((nValorSeguro1 * 0.8) / 100)
-nValor5porcento  := ((nValorSeguro1 * 5) / 100)
-nValor6porcento  := ((nValorSeguro1 * 6) / 100)
-nValor8porcento  := ((nValorSeguro1 * 8) / 100)
-nValor10porcento := ((nValorSeguro1 * 10) / 100)
-nValor12porcento := ((nValorSeguro1 * 12) / 100)
-nValor15porcento := ((nValorSeguro1 * 15) / 100)
-nValor18porcento := ((nValorSeguro1 * 18) / 100)
-nValor20porcento := ((nValorSeguro1 * 20) / 100)
+nValorSeguro1      := ((nValor * 6) / 100) // 1000, 60
+nValorSeguro2      := ((nValor * 7) / 100)
+nTempoHabilitado   := (nAnoDataCotacao - nAnoPrimeiraCNH)
+nValorPorcentagem1 := 0
+nValorPorcentagem2 := 0
 nMesDataCotacao  := Month(dCotacao)
 
 // seguro 1
 if nIdade < 25 .or. nIdade > 65
-    nLiquidoSeguro1 += nValor10porcento
+    nValorPorcentagem1 += 10
     if cSexo == "M"
-        nLiquidoSeguro1 += nValor10porcento
+        nValorPorcentagem1 += 10
     else
-        nLiquidoSeguro1 -= nValor5porcento  
+        nValorPorcentagem1 -= 5  
     endif
     if nTempoHabilitado <= 3
-        nLiquidoSeguro1 += nValor15porcento
+        nValorPorcentagem1 += 15
     elseif nTempoHabilitado > 8
-        nLiquidoSeguro1 -= nValor10porcento
+        nValorPorcentagem1 -= 10
     endif
     if cTipoVeiculo == "E"
-        nLiquidoSeguro1 += nValor10porcento
+        nValorPorcentagem1 += 10
     elseif cTipoVeiculo == "L"
-        nLiquidoSeguro1 += nValor20porcento
+        nValorPorcentagem1 += 20
     endif
     if nMotor > 2
-        nLiquidoSeguro1 += nValor15porcento
+        nValorPorcentagem1 += 15
     endif
     if nAnoFabricacao < nAnoDataCotacao
         nTempoFabricado := (nAnoDataCotacao - nAnoFabricacao)
         if nTempoFabricado < 20
-            nValorFabricacao := (nTempoFabricado * nValor05porcento)
-            nLiquidoSeguro1  += nValorFabricacao
+            nValorPorcentagem1 := (nTempoFabricado * 0.5)
         else
-            nLiquidoSeguro1  += nValor10porcento
+            nValorPorcentagem1 += 10
         endif
     endif
     if cUsoVeiculo == "O"
-        nLiquidoSeguro1 += nValor10porcento
+        nValorPorcentagem1 += 10
     endif
     if nMesDataCotacao == 3
-        nLiquidoSeguro1 -= nValor10porcento
+        nValorPorcentagem1 -= 10
     endif
 endif
 
 // seguro 2
 
 if nIdade < 23 .or. nIdade > 60
-    nLiquidoSeguro2 += nValor15porcento
+    nValorPorcentagem2 += 15
 elseif nIdade >= 30 .and. nIdade <= 50
-    nLiquidoSeguro2 -= nValor8porcento
+    nValorPorcentagem2 -= 8
 endif
 if cSexo == "M"
-    nLiquidoSeguro2 -= nValor6porcento
+    nValorPorcentagem2 -= 6
 else
-    nLiquidoSeguro2 += nValor12porcento  
+    nValorPorcentagem2 += 12  
 endif
 if nTempoHabilitado <= 2
-    nLiquidoSeguro2 += nValor20porcento
+    nValorPorcentagem2 += 20
 elseif nTempoHabilitado > 5
-    nLiquidoSeguro2 -= nValor8porcento
+    nValorPorcentagem2 -= 8
 endif
 if cTipoVeiculo == "E"
-    nLiquidoSeguro2 += nValor15porcento
+    nValorPorcentagem2 += 15
 elseif cTipoVeiculo == "L"
-    nLiquidoSeguro2 += nValor18porcento
+    nValorPorcentagem2 += 18
 endif
 if nMotor >= 1.5
-    nLiquidoSeguro2 += nValor10porcento
+    nValorPorcentagem2 += 10
 endif
 if nAnoFabricacao < nAnoDataCotacao
     nTempoFabricado := (nAnoDataCotacao - nAnoFabricacao)
     if nTempoFabricado < 10
-        nValorFabricacao := (nTempoFabricado * nValor08porcento)
-        nLiquidoSeguro2  += nValorFabricacao
+        nValorPorcentagem2 := (nTempoFabricado * 0.8)
     else
-        nLiquidoSeguro2  += nValor8porcento
+        nValorPorcentagem2  += 8
     endif
 endif
 if cUsoVeiculo == "O"
-    nLiquidoSeguro2 += nValor12porcento
+    nValorPorcentagem2 += 12
 endif
 if nMesDataCotacao == 9
-    nLiquidoSeguro2 -= nValor8porcento
+    nValorPorcentagem2 -= 8
 endif
 
-nValorSeguro1Ano := nValorSeguro1 + nLiquidoSeguro1
-nValorSeguro2Ano := nValorSeguro2 + nLiquidoSeguro2
-nValorSeguro1Tri := nValorSeguro1Ano / 4
-nValorSeguro2Tri := nValorSeguro2Ano / 4
-nValorSeguro1Mes := nValorSeguro1Ano / 12
-nValorSeguro2Mes := nValorSeguro2Ano / 12
+nValorPorcentagem1 := nValorSeguro1 + ((nValorSeguro1 * nValorPorcentagem1) / 100 )
+nValorPorcentagem2 := nValorSeguro2 + ((nValorSeguro2 * nValorPorcentagem2) / 100 )
+nValorSeguro1Ano   := nValorPorcentagem1
+nValorSeguro2Ano   := nValorPorcentagem2
+nValorSeguro1Tri   := nValorSeguro1Ano / 4
+nValorSeguro2Tri   := nValorSeguro2Ano / 4
+nValorSeguro1Mes   := nValorSeguro1Ano / 12
+nValorSeguro2Mes   := nValorSeguro2Ano / 12
 
 @ 01, 01 clear to 08, 78
 
@@ -195,4 +185,4 @@ nValorSeguro2Mes := nValorSeguro2Ano / 12
 @ 05, 45 say nValorSeguro2Tri
 @ 06, 33 say "Anual......:"
 @ 06, 45 say nValorSeguro2Ano
-@ 09, 02 say "Cotacao valida ate"
+@ 09, 02 say "Cotacao valida ate" + nDiaFinalCotacao + " " + nMesDataCotacao

@@ -67,7 +67,7 @@ do while .t.
         @ 11, 31 say "%"
 
         @ 04, 28 get cColaborador        picture "@!"          valid !Empty(cColaborador)
-        @ 05, 28 get cSexo               picture "@!"          valid cSexo == "M" .or. cSexo == "F"
+        @ 05, 28 get cSexo               picture "@!"          valid cSexo $ "MF"
         @ 06, 28 get dNascimento                               valid dNascimento < dAtual .and. !Empty(dNascimento)
         @ 07, 28 get dAdmissao                                 valid dAdmissao < dAtual
         @ 08, 28 get dDemissao                                 valid dDemissao < dAtual .and. dDemissao > dAdmissao
