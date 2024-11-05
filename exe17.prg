@@ -17,16 +17,16 @@ do while .t.
         loop
     endif
 
-    nTamanho      := Len(cNome)
-    cNome         := AllTrim(cNome)
-    nTamanho      := Len(cNome) 
-    cPrimeiroNome := SubStr(cNome, 1, 10)
+    cNome             := AllTrim(cNome)
+    nTamanho          := Len(cNome) 
+    cInvertida := ""
     
     do while nTamanho > 0
-        
+        @ 04, 02 clear to 04, 20
+        cInvertida += SubStr(cNome, nTamanho--, 1)
     enddo
     
-    @ 04, 02 say Str(nTamanho) + cPrimeiroNome
+    @ 04, 02 say cInvertida
 
     if LastKey() == 27
         exit
