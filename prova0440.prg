@@ -65,11 +65,11 @@ do while .t.
             if nGetSenhaLen < 8
                 Alert(cSenhaPequena)
                 nCodigo -= 1
-            endif/*
+            endif
             if !(cGetSenha $ cValid)
                 Alert(cSenhaFraca)
                 nCodigo -= 1
-            endif*/
+            endif
             
             cSenha        := cSenha + cGetSenha
             dCadastro     += CToD("")
