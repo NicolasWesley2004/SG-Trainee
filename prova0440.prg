@@ -41,8 +41,8 @@ do while .t.
         do while .t.
             @ 01, 01 clear to 04, 30
 
-            nCodigo   += 1
-            cGetSenha := Space(12)
+            nCodigo       += 1
+            cGetSenha     := Space(12)
 
             @ 01, 01 say "Codigo.........: " + Transform(nCodigo, "999")
             @ 02, 01 say "Senha..........: "
@@ -60,7 +60,6 @@ do while .t.
                 loop
             endif
 
-            cGetSenha    := AllTrim(cGetSenha)
             nGetSenhaLen := Len(cGetSenha)
 
             if nGetSenhaLen < 8
@@ -72,26 +71,56 @@ do while .t.
                 nCodigo -= 1
             endif*/
             
-            cSenha := cSenha + cGetSenha
-            dCadastro += CToD("")
+            cSenha        := cSenha + cGetSenha
+            dCadastro     += CToD("")
 
             if LastKey() == 27
                 exit
             endif
         enddo
+
     elseif cEscolha == "2"
+        @ 01, 01 clear to 04, 30
         do while .t.
-            @ 01, 01 clear to 04, 30
+            nCodigoSenha := 0
 
             if cSenha == ""
                 Alert("Nao existem senhas cadastradas")
                 exit
             endif
 
-            Alert(cSenha)
+            @ 01, 01 say "Codigo.........:"
 
+            @ 01, 18 get nCodigoSenha picture "999"
+            read
+
+            if LastKey() == 27
+                nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
+                if nOpcao == 1
+                    exit
+                endif
+                loop
+            endif
+
+            if nCodigoSenha == 1
+                nComeco         := 1
+                cSenhaEscolhida := SubStr(cSenha, nComeco, 12)
+                //Alert(cSenhaEscolhida)
+            elseif nCodigoSenha <= nCodigo .and. nCodigoSenha > 1
+                nCodigoSenha    -= 1
+                nComeco         := 13 * nCodigoSenha
+                cSenhaEscolhida := SubStr(cSenha, nComeco, 12)
+                //Alert(cSenhaEscolhida)
+            endif
+
+            @ 02, 01 say "Senha..........: " + cSenhaEscolhida
+            @ 03, 01 say "Data cadastro..: " + Str(dCadastroEscolhida)
 
         enddo
-    endif
 
+    elseif cEscolha == "3"
+        exit
+    endif
 enddo
+
+//n deu tempo
