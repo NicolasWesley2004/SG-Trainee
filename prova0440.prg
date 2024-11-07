@@ -4,45 +4,38 @@ cls
 
 set epoch to 1940
 set date brit
+set message to 10 center
+set wrap on
 
 nCodigo       := 0
 cSenha        := ""
 dCadastro     := CToD("")
+dAtual        := Date()
 cSenhaPequena := "Senha deve possuir pelo menos 8 caracteres."
 cSenhaFraca   := "Senha fraca tente novamente."
-dAtual        := Date()
-dAnoAtual     := Year(dAtual)
 cNumerico     := "1|2|3|4|5|6|7|8|9|"
 cMaiuscula    := "A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|"
 cMinuscula    := "a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|"
 cEspecial     := "!|@|#|$|%|^|&|*|(|)|-|+|"
-cValid        := cNumerico + cMaiuscula + cMinuscula + cEspecial
 
 do while .t.
-    cEscolha := Space(1)
-
     @ 01, 01 clear to 05, 40
-    @ 01, 01 say "1- Cadastrar"
-    @ 02, 01 say "2- Consultar"
-    @ 03, 01 say "3- Sair"
+    @ 01, 01 prompt "Cadastrar " message "Cadastra senhas"
+    @ 02, 01 prompt "Consultar " message "Consulta senhas"
+    @ 03, 01 prompt "Sair      " message "Sai do programa"
+    menu to nEscolha
 
-    @ 04, 01 get cEscolha picture "@!" valid cEscolha $ "123"
-    read
+    if nEscolha == 0
+        nEscolha := 3
 
-    if LastKey() == 27
-        nOpcao := Alert("Deseja sair?", {"Sim", "Nao"})
-        if nOpcao == 1
-            exit
-        endif
-        loop
-    endif
-
-    if cEscolha == "1"
+    elseif nEscolha == 1
         do while .t.
+
+            @ 10, 01 clear to 10, 50
             @ 01, 01 clear to 04, 30
 
-            nCodigo       += 1
-            cGetSenha     := Space(12)
+            nCodigo++
+            cGetSenha := Space(12)
 
             @ 01, 01 say "Codigo.........: " + Transform(nCodigo, "999")
             @ 02, 01 say "Senha..........: "
@@ -60,26 +53,42 @@ do while .t.
                 loop
             endif
 
+            cGetSenha    := AllTrim(cGetSenha)
             nGetSenhaLen := Len(cGetSenha)
+            cValidSenha  := SubStr(cGetSenha, 1, nGetSenhaLen)
+            lMaiuscula := .f.
 
             if nGetSenhaLen < 8
                 Alert(cSenhaPequena)
-                nCodigo -= 1
-            endif
-            if !(cGetSenha $ cValid)
+                nCodigo--/*
+            else
+                if cValidSenha $ cMaiuscula
+                    lMaiuscula := .t.
+                endif
+                if cValidSenha $ cMinuscula
+                    lMinuscula := .t.
+                endif
+                if cValidSenha $ cNumerico
+                    lNumerico := .t.
+                endif
+                if cValidSenha $ cEspecial
+                    lEspecial := .t.
+                endif*/
+            endif/*
+            if !(lMaiuscula .and. lMinuscula .and. lNumerico .and. lEspecial)
                 Alert(cSenhaFraca)
-                nCodigo -= 1
-            endif
+                nCodigo--
+            endif*/
             
-            cSenha        := cSenha + cGetSenha
-            dCadastro     += CToD("")
+            dGetCadastro := DToC(dCadastro)
+            cSenha       := cSenha + cGetSenha + dGetCadastro
 
             if LastKey() == 27
                 exit
             endif
         enddo
 
-    elseif cEscolha == "2"
+    elseif nEscolha == 2
         @ 01, 01 clear to 04, 30
         do while .t.
             nCodigoSenha := 0
@@ -103,24 +112,36 @@ do while .t.
             endif
 
             if nCodigoSenha == 1
-                nComeco         := 1
-                cSenhaEscolhida := SubStr(cSenha, nComeco, 12)
+                nComecoSenha    := 1
+                nComecoData     := 13
+                cSenhaEscolhida := SubStr(cSenha, nComecoSenha, 12) 
+                cDataEscolhida  := SubStr(cSenha, nComecoData, 8)
                 //Alert(cSenhaEscolhida)
-            elseif nCodigoSenha <= nCodigo .and. nCodigoSenha > 1
-                nCodigoSenha    -= 1
-                nComeco         := 13 * nCodigoSenha
-                cSenhaEscolhida := SubStr(cSenha, nComeco, 12)
+            elseif nCodigoSenha > 1
+                nCodigoSenha--
+                nComecoSenha    := 20 * nCodigoSenha
+                nComecoSenha++
+                nComecoData     := 13 + 20 * nCodigoSenha
+                cSenhaEscolhida := SubStr(cSenha, nComecoSenha, 12)
+                cDataEscolhida  := SubStr(cSenha, nComecoData, 8)
                 //Alert(cSenhaEscolhida)
             endif
 
+            dAnoCadastro := Year(dCadastro)
+            dMesCadastro := Month(dCadastro)
+            dDiaCadastro := Day(dCadastro)
+            dDiadaSemana := DoW(dCadastro)
+
+            @ 02, 18 clear to 02, 70
+            @ 03, 18 clear to 03, 30
             @ 02, 01 say "Senha..........: " + cSenhaEscolhida
-            @ 03, 01 say "Data cadastro..: " + Str(dCadastroEscolhida)
+            @ 03, 01 say "Data cadastro..: " + cDataEscolhida
+
+            @ 05, 27 say "D   S   T   Q   Q   S   S"
 
         enddo
-
-    elseif cEscolha == "3"
+// calendario - CToD e DoW / 
+    elseif nEscolha == 3
         exit
     endif
 enddo
-
-//n deu tempo

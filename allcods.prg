@@ -18,23 +18,35 @@ nNumero                   // every variable starts with a lowercase letter to id
 
                                                     //NUMERIC VARIABLE
 
-n...                      // numerical variable
-n... := 0                 // variable receiving numerical value (with 10 spaces / extra)
-n... := n...              // variable receiving variable
-n... := (n... + n...)     // variavel recebendo o valor entre soma de duas variaveis
-n... := (n... - n...)     // variavel recebendo o valor entre subtração de duas variaveis
-n... := (n... * n...)     // variavel recebendo o valor entre multiplicação de duas variaveis
-n... := (n... / n...)     // variavel recebendo o valor entre divisão de duas variaveis
+n...                           // numerical variable
+n... := 0                      // variable receiving numerical value (with 10 spaces / extra)
+n... := n...                   // variable receiving variable
+n... := (n... + n...)          // variavel recebendo o valor entre soma de duas variaveis (+, -, *, /)
 
-c...                      // string/character variable
-d...                      // date variable
-l...                      // logic variable
-c... := ""                // variavel recebendo string
-c... := Space(40)         // determinando o espaco em uma variavel c (nome: comun entre 40 e 50)
-d... := Date()            // variavel iniciando com data da maquina
-d... := Date() + 7        // soma ou subtracao de dias
-d... := CTod ("")         // variavel iniciando transformando caracter em data (iniciando vazia)
-d... := CTod ("01/01/12") // variavel iniciando com data pre selecionada
+                                                    //CHARACTER VARIABLE
+
+c...                           // string/character variable
+c... := ""                     // variavel recebendo string
+c... := Space(40)              // determinando o espaco em uma variavel c (nome: comun entre 40 e 50)
+
+                                                    //DATE VARIABLE
+
+d...                           // date variable
+d... := Date()                 // variavel iniciando com data da maquina
+d... := Date() + 7             // soma ou subtracao de dias
+d... := CTod ("")              // variavel iniciando transformando caracter em data (iniciando vazia)
+d... := CTod ("01/01/12")      // variavel iniciando com data pre selecionada
+
+dExemplo   := Date()
+nAno       := Year(dExemplo)   // 2024
+nMes       := Mounth(dExemplo) // 10
+nDia       := Day(dExemplo)    // 28
+nDiaSemana := DoW(dExemplo)    // 2
+2 - seg
+
+                                                    //LOGIC VARIABLE
+
+l...                           // logic variable
 
 
                                                     WRITE ON THE PAGE
@@ -125,16 +137,6 @@ cMateriaDp := cMateriaDp + "-" + cMateria
            += "," + cMateria
 
 //
-
-dExemplo   := Date()
-nAno       := Year(dExemplo)   // 2024
-nMes       := Mounth(dExemplo) // 10
-nDia       := Day(dExemplo)    // 28
-nDiaSemana := DoW(dExemplo)    // 2
-1 - dom
-2 - seg
-...
-7 - sab
 
 
                                                     COMPARISON OPERATORS
@@ -234,4 +236,12 @@ nTamanho      := Len(cPN)             // 2
 
 //
 
-prova 02 and 03, 
+set message to 23
+
+@ 01, 01 prompt "Cadastrar " message "Cadastra senha"
+@ 02, 01 prompt "Consultar " message "Consulta senha"
+@ 03, 01 prompt "Sair      " message "sai do programa"
+menu to nOpcao
+
+//
+, 
