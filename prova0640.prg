@@ -22,14 +22,13 @@ do while .t.
     nLetraUsada        := 0
     nColunaLetra       := 10
     nLetraCasa         := 1
-
-
+    cCorCensura        := "w/w"
     nErro              := 0
     nInicio            := 1
     nColuna            := 16
     nLetras            := 1
 
-    @ 01, 01 to 20, 46
+    @ 01, 01 to 20, 45
     @ 01, 16 say " JOGO DA VELHA "
     @ 03, 02 say "Nome do usuario.:"
 
@@ -52,7 +51,7 @@ do while .t.
     @ 10, 32 clear to 10, 45
     @ 09, 02 say "Palavra chave...:"
 
-    @ 09, 20 get cPalavra picture "@!" valid !Empty(cPalavra)
+    @ 09, 20 get cPalavra picture "@!" valid !Empty(cPalavra) color cCorCensura
     read
 
     if LastKey() == 27
@@ -77,12 +76,12 @@ do while .t.
         @ 12, 02 say "Dica 2:"
         @ 13, 02 say "Dica 3:"
 
-        @ 11, 10 get cDica1 picture "@!" valid !Empty(cDica1)
-        @ 12, 10 get cDica2 picture "@!" valid !Empty(cDica2)
-        @ 13, 10 get cDica3 picture "@!" valid !Empty(cDica3)
+        @ 11, 10 get cDica1 picture "@!" valid !Empty(cDica1) color cCorCensura
+        @ 12, 10 get cDica2 picture "@!" valid !Empty(cDica2) color cCorCensura
+        @ 13, 10 get cDica3 picture "@!" valid !Empty(cDica3) color cCorCensura
         read
 
-        @ 02, 02 clear to 19, 45
+        @ 02, 02 clear to 19, 44
         do while .t.
             cLetra := Space(1)
 
@@ -93,9 +92,9 @@ do while .t.
             @ 05, 09 to 06, 09
             @ 11, 10 say "Digite uma letra:"
             @ 13, 02 say "Letras: " + cLetrasUsadas
-            @ 16, 02 say "Dica 1: ***"
-            @ 17, 02 say "Dica 2: ***"
-            @ 18, 02 say "Dica 3: ***"
+            @ 16, 02 say "Dica 1: "
+            @ 17, 02 say "Dica 2: "
+            @ 18, 02 say "Dica 3: "
 
             @ 11, 28 get cLetra picture "@!" valid !Empty(cLetra)
             read
@@ -121,6 +120,24 @@ do while .t.
             cPalavra       := AllTrim(cPalavra)
             cPalavraLen    := Len(cPalavra)
 
+
+            /*do while .t.
+                cLetraPalavra := SubStr(cPalavra, nInicio, 1) 
+
+                if cLetra $ cPalavra
+                    if cLetra $ cLetraPalavra
+                        @ 07, nColuna say cLetraPalavra
+                    endif
+                elseif !cLetra $ cPalavra
+                    Alert("Erro")
+                    nErro++
+                    loop
+                endif
+
+                nInicio++
+            enddo*/
+                    
+
             if cLetra $ cPalavra
                 cLetraPalavra := SubStr(cPalavra, nInicio, 1)
                 if cLetra == cLetraPalavra
@@ -133,6 +150,7 @@ do while .t.
                             @ 07, nColuna say cLetraPalavra
                         endif
                         nLetraCasa += 1
+
                     enddo
                 endif
             else
@@ -146,24 +164,25 @@ do while .t.
                 @ 08, 09 say "|"
                 @ 16, 10 say AllTrim(cDica1)
             elseif nErro == 3
-                @ 09, 08 say "\"
-                @ 09, 10 say "/"
+                @ 08, 08 say "\"
+                @ 08, 10 say "/"
                 @ 17, 10 say AllTrim(cDica2)
             elseif nErro == 4
-                @ 10, 08 say "/|\"
+                @ 09, 08 say "/ \"
                 @ 18, 10 say AllTrim(cDica3)
             elseif nErro == 5
-                @ 11, 08 say "0 0"
+                @ 10, 08 say "- -"
             elseif nErro == 6
                 @ 08, 09 say "T"
                 Alert("ENFORCADO, GAME OVER")
+                @ 02, 02 clear to 19, 44
                 exit
             endif 
         enddo
 
         // MODO MEDIO
         elseif nEscolha == 2
-            @ 02, 02 clear to 19, 45
+            @ 02, 02 clear to 19, 44
             do while .t.
                 cLetra := Space(1)
     
@@ -223,20 +242,21 @@ do while .t.
                 elseif nErro == 2
                     @ 08, 09 say "|"
                 elseif nErro == 3
-                    @ 09, 08 say "\"
-                    @ 09, 10 say "/"
+                    @ 08, 08 say "\"
+                    @ 08, 10 say "/"
                 elseif nErro == 4
-                    @ 10, 08 say "/|\"
+                    @ 09, 08 say "/ \"
                 elseif nErro == 5
                     @ 08, 09 say "T"
                     Alert("ENFORCADO, GAME OVER")
+                    @ 02, 02 clear to 19, 44
                     exit
                 endif 
             enddo
 
             // MODO DIFICIL
         elseif nEscolha == 3
-            @ 02, 02 clear to 19, 45
+            @ 02, 02 clear to 19, 44
             do while .t.
                 cLetra := Space(1)
     
@@ -296,11 +316,12 @@ do while .t.
                 elseif nErro == 2
                     @ 08, 09 say "|"
                 elseif nErro == 3
-                    @ 09, 08 say "\"
-                    @ 09, 10 say "/"
+                    @ 08, 08 say "\"
+                    @ 08, 10 say "/"
                 elseif nErro == 4
                     @ 08, 09 say "T"
                     Alert("ENFORCADO, GAME OVER")
+                    @ 02, 02 clear to 19, 44
                     exit
                 endif 
             enddo
